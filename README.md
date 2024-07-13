@@ -45,3 +45,16 @@ Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi)
 *BONUS 3:*
 Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 Buon lavoro! 
+
+
+1 creo la struttura statica 
+
+2 vado a recuperare dal DOM l'elemeno che conterra il carosello ed i bottoni di controllo
+
+3 creo una funzione per aggiornare il contenuto del carosello basato sull'indice dove in base alla posizione aggiungo o tolgo la classe d-none per far vedere l'immagine
+
+4 aggiungo il gestore di evento per i bottoni con incremento o decremento 
+
+5 aggiorno il carosello 
+
+6 inizializzo il carosello mostrando la prima immagine
