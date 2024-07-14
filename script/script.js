@@ -25,4 +25,27 @@ const images = [
 
 
 //vado a recuperare dal DOM l'elemeno che conterra il carosello ed i bottoni di controllo
-const carouselInner = document.querySelector('.carousel-inner');
+const carouselInner = document.querySelector('.carousel-inner');.
+
+//creo una funzione per aggiornare il contenuto del carosello basato sull'indice dove in base alla posizione aggiungo o tolgo la classe d-none per far vedere l'immagine
+// Popola dinamicamente il carosello con gli oggetti dell'array
+images.forEach((img, index) => {
+    // Crea un nuovo div per ogni elemento del carosello
+    const itemDiv = document.createElement('div');
+    itemDiv.classList.add('carousel-item');
+
+    // Aggiunge la classe 'active' al primo elemento del carosello
+    if (index === 0) itemDiv.classList.add('active');
+
+    // Imposta il contenuto del div con l'immagine, titolo e testo
+    itemDiv.innerHTML = `
+        <img src="${img.image}" alt="${img.title}">
+        <div class="carousel-caption">
+            <h3>${img.title}</h3>
+            <p>${img.text}</p>
+        </div>
+    `;
+
+    // Aggiunge il div appena creato al container del carosello
+    carouselInner.appendChild(itemDiv);
+});
