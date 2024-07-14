@@ -1,4 +1,4 @@
-//array di oggetti
+// Array di oggetti contenente i dati delle immagini
 const images = [
     {
         image: 'img/01.webp',
@@ -23,11 +23,9 @@ const images = [
     }
 ];
 
+// Seleziona l'elemento del DOM dove verranno inserite le immagini del carosello
+const carouselInner = document.querySelector('.carousel-inner');
 
-//vado a recuperare dal DOM l'elemeno che conterra il carosello ed i bottoni di controllo
-const carouselInner = document.querySelector('.carousel-inner');.
-
-//creo una funzione per aggiornare il contenuto del carosello basato sull'indice dove in base alla posizione aggiungo o tolgo la classe d-none per far vedere l'immagine
 // Popola dinamicamente il carosello con gli oggetti dell'array
 images.forEach((img, index) => {
     // Crea un nuovo div per ogni elemento del carosello
@@ -49,3 +47,37 @@ images.forEach((img, index) => {
     // Aggiunge il div appena creato al container del carosello
     carouselInner.appendChild(itemDiv);
 });
+
+// Variabile per tenere traccia dell'indice dell'immagine attualmente visibile
+let currentIndex = 0;
+
+// Seleziona tutti gli elementi del carosello
+const items = document.querySelectorAll('.carousel-item');
+
+// Calcola il numero totale di elementi del carosello
+const totalItems = items.length;
+
+// Aggiunge un event listener al bottone "next" per scorrere le immagini in avanti
+document.querySelector('.next').addEventListener('click', () => {
+    // Rimuove la classe 'active' dall'elemento corrente
+    items[currentIndex].classList.remove('active');
+
+    // Incrementa l'indice corrente con modulo per il ciclo infinito
+    currentIndex = (currentIndex + 1) % totalItems;
+
+    // Aggiunge la classe 'active' al nuovo elemento corrente
+    items[currentIndex].classList.add('active');
+});
+
+// Aggiunge un event listener al bottone "prev" per scorrere le immagini indietro
+document.querySelector('.prev').addEventListener('click', () => {
+    // Rimuove la classe 'active' dall'elemento corrente
+    items[currentIndex].classList.remove('active');
+
+    // Decrementa l'indice corrente con modulo per il ciclo infinito
+    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+
+    // Aggiunge la classe 'active' al nuovo elemento corrente
+    items[currentIndex].classList.add('active');
+});
+
